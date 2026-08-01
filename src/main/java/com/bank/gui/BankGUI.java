@@ -1,17 +1,20 @@
+package com.bank.gui;
+
+import com.bank.model.Account;
+import com.bank.model.Bank;
+import com.bank.model.Customer;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class BankGUI extends JFrame {
     private Bank bank;
-    private BankDAO dao;
 
     public BankGUI(Bank bank) {
         this.bank = bank;
 
-        setTitle(bank.getClass().getSimpleName() + " - Bank Management System");
+        setTitle(bank.getName() + " - Bank Management System");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
@@ -25,6 +28,7 @@ public class BankGUI extends JFrame {
         add(viewCustomers);
         add(viewAccounts);
 
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

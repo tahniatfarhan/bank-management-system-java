@@ -1,103 +1,152 @@
-# Bank Management System (Java Swing & JDBC / MySQL)
+# Banking Management System (Java Swing / JDBC / MySQL)
 
-## Professional Overview
-The **Bank Management System** is a desktop application engineered in Java using **Swing GUI** and **JDBC** connected to a **MySQL** relational database. Developed for the *Database Systems* and *Object-Oriented Programming* courses at UET Lahore, this application manages client accounts, financial transactions, customer profiles, and system feedback using clean Data Access Object (DAO) abstraction patterns.
+[![Java CI with Maven](https://github.com/tahniatfarhan/bank-management-system-java/actions/workflows/ci.yml/badge.svg)](https://github.com/tahniatfarhan/bank-management-system-java/actions/workflows/ci.yml)
+[![CodeQL Analysis](https://github.com/tahniatfarhan/bank-management-system-java/actions/workflows/codeql.yml/badge.svg)](https://github.com/tahniatfarhan/bank-management-system-java/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Java 17](https://img.shields.io/badge/Java-17%2B-blue.svg)](https://www.oracle.com/java/)
+[![Build System: Maven](https://img.shields.io/badge/Build-Maven-red.svg)](https://maven.apache.org/)
 
-## Objectives
-- Apply core Object-Oriented Programming principles (Encapsulation, Inheritance, Polymorphism, Abstraction).
-- Implement the Data Access Object (DAO) architectural pattern to decouple persistence logic from presentation UI.
-- Design and query a normalized MySQL relational database schema complete with Entity-Relationship Diagrams (ERD).
+> 🎓 **Academic Project Disclaimer:** This repository is an **educational laboratory demonstration project** developed for the Database Systems / Object-Oriented Programming course in the BS Cyber Security degree program at UET Lahore. It demonstrates 3-Tier Architecture, JDBC connection management, Data Access Object (DAO) pattern, and Java Swing GUI components.
 
-## Features
-- **Interactive Java Swing GUI**: Graphical dashboard (`BankGUI.java`) for managing client accounts and system navigation.
-- **Account & Financial Operations**: Account creation, deposit processing, withdrawal verification, and dynamic balance inquiries.
-- **Data Access Object (DAO) Pattern**: `BankDAO.java` encapsulating parameterized SQL queries and database CRUD operations.
-- **Relational Database Backend**: MySQL database structure modeled via ER Diagram (`sql.mwb`, `ERD.png`).
-- **Resilient Fallback Storage**: Dynamic JDBC connection wrapper (`DBConnection.java`) with in-memory datastore fallback (`DataStore.java`).
+---
 
-## Technologies Used
-- **Primary Language**: Java (JDK 8+)
-- **GUI Framework**: Java Swing / AWT
-- **Database Connectivity**: JDBC (Java Database Connectivity)
-- **Database Engine**: MySQL / MySQL Workbench
+## 📐 System Architecture
 
-## Architecture Overview
-The system follows a standard 3-Tier Architecture:
-1. **Presentation Layer**: `BankGUI.java` (User Interface & Event Handling).
-2. **Business / Domain Layer**: `Account`, `Bank`, `Client`, `Customer`, `Person` domain models.
-3. **Persistence Layer**: `BankDAO.java` and `DBConnection.java` interacting with MySQL Database tables.
+The application adopts a **3-Tier Data Access Object (DAO)** pattern separating UI presentation, domain models, data access objects, and relational database persistence:
 
-## Folder Structure
-```text
+```mermaid
+graph TD
+    A[Swing Desktop GUI / CLI Client] -->|Invokes Data Operations| B[BankDAO / DataStore Layer]
+    B -->|Establishes Secure JDBC Session| C[DBConnection Config]
+    C -->|Environment-Configured Credentials| D[(MySQL Relational Database)]
+    D -->|Executes Stored Procedures| E[DepositMoney / WithdrawMoney Procedures]
+```
+
+---
+
+## 📁 Project Structure
+
+```
 bank-management-system-java/
-├── src/
-│   ├── Account.java
-│   ├── Bank.java
-│   ├── BankDAO.java
-│   ├── BankGUI.java
-│   ├── Client.java
-│   ├── Customer.java
-│   ├── DBConnection.java
-│   ├── DataStore.java
-│   ├── FeedbackStore.java
-│   ├── Main.java
-│   ├── Person.java
-│   └── TestDB.java
-├── docs/
-│   ├── Bank Management System Lab Report.pdf
-│   └── sql.mwb
+├── .github/
+│   ├── dependabot.yml              # Automated monthly dependency scanner
+│   └── workflows/
+│       ├── ci.yml                  # Maven Build & JUnit 5 test runner
+│       └── codeql.yml              # CodeQL Static Application Security Testing
 ├── assets/
 │   ├── diagrams/
-│   │   ├── ERD.png
-│   │   ├── Modeling Additions.png
-│   │   └── Proj StrJDBC.png
+│   │   └── ERD.png                 # Relational Database ER Diagram
 │   └── screenshots/
-│       ├── Output SQL.png
-│       └── Views.png
-├── .gitignore
-├── LICENSE
-└── README.md
+│       ├── Output SQL.png          # Database Stored Procedure Execution
+│       └── Views.png               # SQL Database Views Output
+├── docs/
+│   ├── Bank Management System Lab Report.pdf
+│   └── sql.mwb                     # MySQL Workbench Model File
+├── src/
+│   ├── main/java/com/bank/
+│   │   ├── dao/
+│   │   │   ├── BankDAO.java        # Stored Procedure Data Access Object
+│   │   │   ├── DBConnection.java   # Portable Environment JDBC Provider
+│   │   │   └── DataStore.java      # Relational Data Loader
+│   │   ├── gui/
+│   │   │   └── BankGUI.java        # Java Swing User Interface
+│   │   ├── model/
+│   │   │   ├── Account.java        # Account Entity Model
+│   │   │   ├── Bank.java           # Bank Aggregate Container
+│   │   │   ├── Customer.java       # Customer Entity Model
+│   │   │   └── Person.java         # Base Person Abstract Class
+│   │   ├── util/
+│   │   │   └── FeedbackStore.java  # Feedback file logging utility
+│   │   ├── Client.java             # Terminal Client Entry Point
+│   │   └── Main.java               # Swing GUI Application Entry Point
+│   └── test/java/com/bank/
+│       ├── dao/
+│       │   └── BankDAOTest.java    # Mockito DAO Unit Tests
+│       └── model/
+│           └── BankTest.java       # JUnit 5 Domain Model Tests
+├── .env.example                    # Environment variable configuration template
+├── .gitignore                      # Git exclusion rules
+├── CODE_OF_CONDUCT.md              # Contributor Covenant Code of Conduct
+├── CONTRIBUTING.md                 # Contribution guidelines
+├── LICENSE                         # MIT License
+├── pom.xml                         # Apache Maven build & dependency manifest
+├── README.md                       # Comprehensive Project Documentation
+└── SECURITY.md                     # Vulnerability reporting security policy
 ```
 
-## Installation Guide
-1. Ensure Java Development Kit (JDK 8 or higher) and MySQL Server are installed.
-2. Import `docs/sql.mwb` into MySQL Workbench or execute database initialization scripts.
-3. Configure database host, port, username, and password in `src/DBConnection.java`.
-4. Compile Java source files:
+---
+
+## 🛡️ Security Notes & Best Practices
+
+- **Zero Hardcoded Credentials:** Database parameters are dynamically parsed from environment variables (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`), eliminating security credential leaks.
+- **Strict JDBC Resource Management:** All database operations inside `BankDAO` and `DataStore` leverage Java's `try-with-resources` construct (`try (CallableStatement cs = ...)`), guaranteeing automatic release of database connections and statement handles.
+- **SQL Injection Defenses:** Transactions and updates utilize parametrized `CallableStatement` stored procedure calls (`CALL DepositMoney(?, ?)`) and parametrized `PreparedStatement` queries.
+
+---
+
+## 🛠️ Installation & Execution
+
+### Prerequisites
+- **Java Development Kit (JDK 17 or higher)**
+- **Apache Maven 3.8+**
+- **MySQL Server 8.0+**
+
+### 1. Database Setup
+Execute the relational schema and stored procedures inside MySQL Workbench using `docs/sql.mwb` or run the database DDL script:
+
+```sql
+CREATE DATABASE bank_db;
+USE bank_db;
+
+-- Execute table creations and procedures defined in docs/Bank Management System Lab Report.pdf
+```
+
+### 2. Environment Configuration
+Copy `.env.example` to create your local configuration or export system environment variables:
+
 ```bash
-javac src/*.java
+export DB_HOST="localhost"
+export DB_PORT="3306"
+export DB_NAME="bank_db"
+export DB_USER="root"
+export DB_PASSWORD="your_secure_mysql_password"
 ```
 
-## How to Run
-Run the compiled `Main` class:
+### 3. Build & Test
+Compile the codebase and execute unit test suites using Maven:
+
 ```bash
-java -cp src Main
+# Clean, compile, and run JUnit 5 & Mockito test suites
+mvn clean test
 ```
 
-## Screenshots & Diagrams
-Entity Relationship Diagram (ERD) & Database Output:
-![ERD Diagram](assets/diagrams/ERD.png)
-![SQL Output](assets/screenshots/Output%20SQL.png)
-![Database Views](assets/screenshots/Views.png)
+### 4. Run Application
 
-## Verification & Documentation
-- [Bank Management System Lab Report (PDF)](docs/Bank%20Management%20System%20Lab%20Report.pdf)
-- [MySQL Workbench Schema Model](docs/sql.mwb)
+```bash
+# Launch the Swing GUI application
+mvn exec:java -Dexec.mainClass="com.bank.Main"
+```
 
-## Learning Outcomes
-- Architected desktop applications utilizing OOP design patterns (DAO, Singleton DB connection).
-- Integrated MySQL database operations with Java applications via parameterized JDBC statements.
-- Developed normalized relational database schemas enforcing primary/foreign key integrity constraints.
+---
 
-## Future Improvements
-- Integrate BCrypt password hashing and user role-based access control (Admin vs. Customer).
-- Migrate presentation layer to modern JavaFX or Web REST API (Spring Boot).
-- Add automated transaction auditing and PDF receipt generation.
+## 📸 Screenshots & ER Diagram
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
+| Relational ER Diagram | Database SQL Views |
+|---|---|
+| ![ER Diagram](assets/diagrams/ERD.png) | ![SQL Views](assets/screenshots/Views.png) |
 
-## Author
-**Tahniat Farhan**  
-BS Cyber Security  
-University of Engineering and Technology (UET) Lahore
+---
+
+## 🚀 Future Improvements
+
+- [ ] Implement HikariCP database connection pooling.
+- [ ] Add BCrypt password hashing for customer portal authentication.
+- [ ] Integrate H2 in-memory database profile for automated integration testing without requiring a live local MySQL server.
+
+---
+
+## 📄 License & Author
+
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
+
+**Author:** [Tahniat Farhan](https://github.com/tahniatfarhan) — BS Cyber Security, UET Lahore.

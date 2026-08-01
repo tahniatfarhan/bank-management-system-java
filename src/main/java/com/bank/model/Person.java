@@ -1,3 +1,5 @@
+package com.bank.model;
+
 public abstract class Person {
     protected int id;
     protected String name;

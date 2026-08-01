@@ -1,3 +1,5 @@
+package com.bank.model;
+
 public class Customer extends Person {
     private String address;
 
@@ -10,12 +12,11 @@ public class Customer extends Person {
         return address;
     }
 
-    // Add these getters:
     public String getCnic() {
-        return cnic;  // matches field in Person
+        return cnic;
     }
 
     public String getPhone() {
-        return phone; // matches field in Person
+        return phone;
     }
 }

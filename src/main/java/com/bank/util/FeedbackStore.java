@@ -1,7 +1,12 @@
+package com.bank.util;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+/**
+ * Utility class for logging customer feedback to a local file storage (feedback.txt).
+ */
 public class FeedbackStore {
     private static final String FILE = "feedback.txt";
 
@@ -10,7 +15,7 @@ public class FeedbackStore {
             fw.write("[" + LocalDateTime.now() + "] " + author + ":\n");
             fw.write(text + "\n\n");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Failed to write feedback: " + e.getMessage());
         }
     }
 }
