@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.11.4</junit.version>
         <mockito.version>5.15.2</mockito.version>
-        <mysql.version>9.2.0</mysql.version>
+        <mysql.version>26.7.0</mysql.version>
     </properties>
 
     <dependencies>
