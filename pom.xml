@@ -15,7 +15,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>6.1.2</junit.version>
-        <mockito.version>5.15.2</mockito.version>
+        <mockito.version>5.23.0</mockito.version>
         <mysql.version>26.7.0</mysql.version>
     </properties>
 
