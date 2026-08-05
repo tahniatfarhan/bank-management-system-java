@@ -3,131 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Management System (Java 17) - Project Showcase</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>Bank Management System (Java 17 & Swing) | Tahniat Farhan</title>
+    <meta name="description" content="Modular 3-tier enterprise banking system built with Java 17, Swing GUI, MySQL DAO pattern, dynamic ENV security, and JUnit 5 testing suite.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>">
+    <meta property="og:title" content="Bank Management System (Java 17) - Portfolio Showcase">
+    <meta property="og:description" content="3-Tier Enterprise Banking System in Java 17 with Swing GUI, DAO Pattern, and MySQL.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tahniatfarhan.github.io/bank-management-system-java/">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header / Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <div class="badge"><i class="fa-solid fa-graduation-cap"></i> Academic Project • Java 17 & Maven</div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://github.com/tahniatfarhan" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Portfolio</a>
+            <div class="nav-brand"><i class="fa-solid fa-vault"></i> BankSystem<span>Pro</span></div>
+            <a href="https://github.com/tahniatfarhan/bank-management-system-java" target="_blank" class="nav-github"><i class="fa-brands fa-github"></i> Repository</a>
+        </div>
+    </nav>
+    <header class="bank-hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-graduation-cap"></i> Enterprise Java 17 & Maven Application</span>
             <h1>Bank Management System</h1>
-            <p class="tagline">A modular 3-tier enterprise banking system built with Java 17, Swing GUI, MySQL DAO pattern, dynamic environment variable security, and automated JUnit 5 test suites.</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/tahniatfarhan/bank-management-system-java" target="_blank" class="btn btn-primary"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
-                <a href="#demo" class="btn btn-secondary"><i class="fa-solid fa-laptop-code"></i> Interactive GUI Simulator</a>
+            <p class="hero-tagline">Modular 3-Tier Enterprise Banking System with Swing Desktop GUI, Data Access Object (DAO) Pattern, MySQL Database integration, and Automated JUnit 5 Test Suite.</p>
+            <div class="hero-actions">
+                <a href="#demo" class="btn btn-gold"><i class="fa-solid fa-calculator"></i> Launch Ledger Simulator</a>
+                <a href="https://github.com/tahniatfarhan/bank-management-system-java" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View GitHub Repository</a>
             </div>
         </div>
     </header>
-
-    <!-- Key Metrics / Tech Stack Section -->
-    <section class="tech-stack">
-        <div class="container grid-4">
-            <div class="card">
-                <i class="fa-brands fa-java icon"></i>
-                <h3>Java 17 & Swing</h3>
-                <p>Built with modern Java 17 syntax and Swing desktop GUI components.</p>
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">Project Overview & Rationale</h2>
+            <div class="grid-3">
+                <div class="card"><div class="card-icon"><i class="fa-solid fa-bullseye"></i></div><h3>What It Is</h3><p>Desktop banking platform for account management, transfers, and administrative ledger audit.</p></div>
+                <div class="card"><div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div><h3>Why Built</h3><p>Demonstrates OOP principles, JDBC DAO persistence, validation, and JUnit 5 automated testing.</p></div>
+                <div class="card"><div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>Security Focus</h3><p>Dynamic environment variable secrets management (`DB_URL`, `DB_USER`, `DB_PASS`) preventing credential leaks.</p></div>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-database icon"></i>
-                <h3>MySQL DAO Pattern</h3>
-                <p>Decoupled Data Access Object layer utilizing JDBC try-with-resources.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-shield-halved icon"></i>
-                <h3>Secrets Management</h3>
-                <p>Dynamic environment variable configuration eliminating committed credentials.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-vial icon"></i>
-                <h3>JUnit 5 & Mockito</h3>
-                <p>Comprehensive unit test coverage integrated with GitHub Actions CI.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive GUI Simulation Section -->
-    <section id="demo" class="demo-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fa-solid fa-desktop"></i> Interactive Swing GUI Simulator</h2>
-            <p class="section-desc">Experience the 3-tier desktop banking application directly in your browser.</p>
-
-            <div class="window-frame">
-                <div class="window-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="window-title">National Bank Management System v1.0 (Swing GUI Preview)</span>
-                </div>
-                <div class="window-body">
-                    <div class="gui-nav">
-                        <button class="gui-btn active" onclick="switchTab('customers')"><i class="fa-solid fa-users"></i> View Customers</button>
-                        <button class="gui-btn" onclick="switchTab('accounts')"><i class="fa-solid fa-wallet"></i> View Accounts</button>
-                        <button class="gui-btn" onclick="switchTab('deposit')"><i class="fa-solid fa-money-bill-transfer"></i> Deposit / Withdraw</button>
+        </section>
+        <section id="demo" class="section">
+            <h2 class="section-title">Interactive Banking Simulator</h2>
+            <div class="simulator-window">
+                <div class="sim-header"><div class="sim-dots"><span></span><span></span><span></span></div><div class="sim-title">BankSystemPro - Account Ledger & Swing UI Simulator</div></div>
+                <div class="sim-body">
+                    <div class="account-card"><div class="acc-info"><span class="acc-label">Primary Savings Account</span><span class="acc-number">ACC-88392011</span></div><div class="acc-balance" id="balance-display">$5,420.00</div></div>
+                    <div class="sim-controls">
+                        <div class="form-group"><label for="txn-type">Transaction Type</label><select id="txn-type" class="form-control"><option value="deposit">Deposit Funds</option><option value="withdraw">Withdraw Cash</option><option value="transfer">Transfer to Account</option></select></div>
+                        <div class="form-group"><label for="txn-amount">Amount ($)</label><input type="number" id="txn-amount" class="form-control" value="250.00" min="1"></div>
+                        <button id="btn-execute-txn" class="btn btn-gold-full"><i class="fa-solid fa-check"></i> Execute Transaction</button>
                     </div>
-                    <div class="gui-content" id="guiScreen">
-                        <!-- Loaded dynamically via script.js -->
-                    </div>
+                    <div class="ledger-box"><div class="ledger-header"><span>Transaction Ledger</span><span class="badge-status"><i class="fa-solid fa-circle"></i> Connected (MySQL DAO)</span></div><div class="ledger-list" id="ledger-list"><div class="ledger-item credit"><div><i class="fa-solid fa-arrow-down-left"></i> Initial Deposit</div><div class="amount">+$5,000.00</div></div></div></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Architecture & Architecture Diagram -->
-    <section class="architecture">
-        <div class="container">
-            <h2 class="section-title"><i class="fa-solid fa-sitemap"></i> 3-Tier DAO Architecture Overview</h2>
-            <div class="arch-box">
-                <div class="layer">
-                    <h4>Presentation Layer</h4>
-                    <p><code>com.bank.gui.BankGUI</code> (Swing UI) & <code>com.bank.Client</code> (CLI)</p>
-                </div>
-                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
-                <div class="layer">
-                    <h4>Domain / Business Layer</h4>
-                    <p><code>com.bank.model.Bank</code>, <code>Customer</code>, <code>Account</code></p>
-                </div>
-                <div class="arrow"><i class="fa-solid fa-arrow-down"></i></div>
-                <div class="layer">
-                    <h4>Data Access Layer</h4>
-                    <p><code>com.bank.dao.BankDAO</code> & <code>DBConnection</code> (MySQL Driver 9.2.0)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Installation & Usage -->
-    <section class="installation">
-        <div class="container">
-            <h2 class="section-title"><i class="fa-solid fa-terminal"></i> Quick Setup & Maven Commands</h2>
-            <pre><code># 1. Clone repository
-git clone https://github.com/tahniatfarhan/bank-management-system-java.git
-cd bank-management-system-java
-
-# 2. Configure Environment Variables
-export DB_HOST=localhost
-export DB_PORT=3306
-export DB_NAME=bank_db
-export DB_USER=root
-export DB_PASSWORD=your_password
-
-# 3. Build & Run JUnit 5 Tests
-mvn clean test
-
-# 4. Launch Desktop GUI Application
-mvn exec:java -Dexec.mainClass="com.bank.Main"</code></pre>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2026 Tahniat Farhan — BS Cyber Security, UET Lahore | Distributed under MIT License</p>
-        </div>
-    </footer>
-
+        </section>
+    </main>
+    <footer class="bank-footer"><p>© 2026 Tahniat Farhan | BS Cyber Security, UET Lahore | <a href="https://github.com/tahniatfarhan/bank-management-system-java" target="_blank">Repository Source</a></p></footer>
     <script src="script.js"></script>
 </body>
 </html>

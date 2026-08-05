@@ -1,0 +1,4 @@
+﻿# Exclude showcase presentation files from GitHub language statistics
+index.html linguist-documentation
+style.css linguist-documentation
+script.js linguist-documentation
